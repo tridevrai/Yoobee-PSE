@@ -3,6 +3,8 @@
 # Write a full project to do the data file processing for csv, text and etc. file formats.
 
 import pandas as pd
+import tensorflow as tf
+import matplotlib.pyplot as plt
 
 class CsvFileProcessor:
     def __init__(self, file_path):
@@ -23,7 +25,16 @@ class TextFileProcessor:
         self.file_path = file_path
 
     def read_file(self):
-        return open(self.file_path, 'r').read()
+        return pd.read_csv(self.file_path, header=None)
+
+class ImageFileProcessor:
+
+    def show_image(self):
+        (x_train, y_train), (x_test, y_test) = tf.keras.datasets.cifar10.load_data()
+        print("training data shape:", x_train.shape, "training labels shape:", y_train.shape)
+
+        plt.imshow(x_train[0])
+        plt.show()
 
 class FileProcessor:
     def __init__(self, file_path):
@@ -43,8 +54,8 @@ class FileProcessor:
     
     def process_file(self):
         print(f"File type: {self.file_path.split('.')[-1]}\n")
-        print(f"head {self.data.head(0)}\n")
-        print(f"tail {self.data.tail(-1)}\n")
+        print(f"head {self.data.iloc[0]}\n")
+        print(f"tail {self.data.iloc[-1]}\n")
         print(f"shape {self.data.shape}\n")
         print(f"columns {self.data.columns}\n")
 
@@ -52,10 +63,15 @@ class FileProcessor:
 
         
 def main():
-    file_path = input("Enter the file path: ")
-    file_processor = FileProcessor(file_path)
-    file_processor.read_file()
-    file_processor.process_file()
+    is_image = input("Dealing with Image file? (y/n): ")
+    if is_image.lower() == "y":
+        file_processor = ImageFileProcessor()
+        file_processor.show_image()
+    else:
+        file_path = input("Enter the file path: ")
+        file_processor = FileProcessor(file_path)
+        file_processor.read_file()
+        file_processor.process_file()
 
 if __name__ == "__main__":
     main()
