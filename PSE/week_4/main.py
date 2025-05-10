@@ -1,5 +1,6 @@
-from database import create_table
+from database import create_table, create_table_course, create_table_junction
 from user_manager import add_user, view_users, search_user, delete_user
+from course_manager import add_course, view_courses, search_course
 
 def menu():
     print("\n==== User Manager ====")
@@ -8,10 +9,16 @@ def menu():
     print("3. Search User by Name")
     print("4. Search User by ID and Name")
     print("5. Delete User by ID")
-    print("6. Exit")
+    print("\n==== Course Manager ====")
+    print("6. Add Course")
+    print("7. View All Courses")
+    print("8. Search Course by ID and Name")
+    print("9. Exit")
 
 def main():
     create_table()
+    create_table_course()
+    create_table_junction()
     while True:
         menu()
         choice = input("Select an option (1-5): ")
@@ -38,6 +45,23 @@ def main():
             user_id = int(input("Enter user ID to delete: "))
             delete_user(user_id)
         elif choice == '6':
+            name = input("Enter course name: ")
+            unit = input("Enter course unit: ")
+            user_id = input("Enter user ID: ")
+            if unit.isdigit() and user_id.isdigit():
+                add_course(name, int(unit), int(user_id))
+            else:
+                print("Please enter a valid number for unit and user ID.")
+        elif choice == '7':
+            courses = view_courses()
+            for course in courses:
+                print(course)
+        elif choice == '8':
+            course_id = input("Enter course ID: ")
+            user_name = input("Enter user name: ")
+            course = search_course(course_id, user_name)
+            print(course)
+        elif choice == '9':
             print("Goodbye!")
             break
         else:
