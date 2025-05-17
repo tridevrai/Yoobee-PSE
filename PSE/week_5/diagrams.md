@@ -35,6 +35,7 @@ Use Case Description:
 
 
 ## Class Diagram:
+Please click the link: https://www.mermaidchart.com/play#pako:eNqNUMsKwjAQ_JWSkyL-gHipehFEsOrNy9qstdgkkoce1H83blCSWsEcAju7OzM7N1YqjmzEygaMmdVQaRA7mflHSLY1qLNbQF5vMOdRsQSBUVmoJi4rtC-k1w_YYydj5gKNBadB2on_yuPfKgtVgq2VjKAN7Bs0EbC2cDiYTl2a_VtsbiZKnTCeWDl02KKmmMb34TAj5TY4dcYqgbqN51zUMrVH-4m9EE9i0g_WlUT-dbePPE96P8J_G0qF6FLaS9Q8adL6wUnHJITA-RKvwf97iRoahbpgR8OdOdiuRqCicD7y7PEE00THjQ
 
 User
 
