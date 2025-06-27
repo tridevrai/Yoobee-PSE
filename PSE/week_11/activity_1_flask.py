@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 # create a flask app
 app = Flask(__name__)
 
@@ -14,6 +14,10 @@ def bye_flask():
 @app.route('/username/<name>')
 def username(name):
     return f"<p>{name} is learning Flask!</p>"
+
+@app.route('/image')
+def image():
+    return render_template('template.html')
 
 # run the app
 if __name__ == '__main__':
